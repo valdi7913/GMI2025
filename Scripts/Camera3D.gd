@@ -31,25 +31,18 @@ func _process(delta):
 	var direction = Vector3(0,0,0);
 	
 	if(Input.is_action_pressed("forwards")):
-		print("forward")
 		direction -= self.get_global_transform().basis.z
-		
 	elif(Input.is_action_pressed("backwards")):
-		print("backwards")
 		direction += self.get_global_transform().basis.z;
 		
 	if(Input.is_action_pressed("left")):
-		print("left")
 		direction -= self.get_global_transform().basis.x;
 	elif(Input.is_action_pressed("right")):
-		print("right")
 		direction += self.get_global_transform().basis.x;
 		
 	if(Input.is_action_pressed("up")):
-		print("up")
 		direction.y += 1;
 	elif(Input.is_action_pressed("down")):
-		print("down")
 		direction.y -= 1;
 	
 	position += direction.normalized() * SPEED * delta;
