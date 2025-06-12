@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca0cunhruy5mh"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_lb3kx"]
+[ext_resource type="PackedScene" uid="uid://bk7vocl1ropux" path="res://Assets/Player.tscn" id="2_w75xp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fsb6o"]
+
+[sub_resource type="Sky" id="Sky_ud02v"]
+sky_material = SubResource("ProceduralSkyMaterial_fsb6o")
+
+[sub_resource type="Environment" id="Environment_mq5ij"]
+background_mode = 2
+background_energy_multiplier = 1.43
+sky = SubResource("Sky_ud02v")
+ambient_light_source = 3
+ambient_light_color = Color(0.745098, 0.764706, 0.984314, 1)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_lb3kx")
+
+[node name="SpotLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.244698, 0.969599, 0, -0.969599, -0.244698, -0.0187869, 4.34462, -0.687332)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mq5ij")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523709, 0)
+radial_segments = 25
+rings = 25
+
+[node name="Player" parent="." instance=ExtResource("2_w75xp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63102, 2.34102)

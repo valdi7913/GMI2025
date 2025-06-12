@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca0cunhruy5mh"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_lb3kx"]
+[ext_resource type="Shader" path="res://Scripts/sea.gdshader" id="2_3bibp"]
+[ext_resource type="Script" path="res://Scripts/SeaMesh.gd" id="3_h86m7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ubxu"]
+render_priority = 0
+shader = ExtResource("2_3bibp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0c3v"]
+render_priority = 0
+shader = ExtResource("2_3bibp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qq770"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_lb3kx")
+
+[node name="SeaMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_2ubxu")
+material_overlay = SubResource("ShaderMaterial_l0c3v")
+mesh = SubResource("PlaneMesh_qq770")
+script = ExtResource("3_h86m7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.244698, 0.969599, 0, -0.969599, -0.244698, 0, 2.1523, -0.687332)
