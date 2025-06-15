@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca0cunhruy5mh"]
+[gd_scene load_steps=7 format=3 uid="uid://ca0cunhruy5mh"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_lb3kx"]
-[ext_resource type="Shader" path="res://Scripts/sea.gdshader" id="2_3bibp"]
 [ext_resource type="PackedScene" uid="uid://bk7vocl1ropux" path="res://Assets/Player.tscn" id="2_w75xp"]
-[ext_resource type="Script" path="res://Scripts/generate_mesh.gd" id="3_h8bkk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fsb6o"]
 
@@ -20,41 +18,6 @@ ambient_light_color = Color(0.745098, 0.764706, 0.984314, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6fsb"]
 albedo_color = Color(0.933333, 0.576471, 0.843137, 1)
 metallic = 0.41
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5hm7"]
-render_priority = 0
-shader = ExtResource("2_3bibp")
-shader_parameter/light_direction = Vector3(0, -1, -1)
-shader_parameter/light_color = Color(1, 1, 1, 1)
-shader_parameter/ambient_color = Color(0.196078, 0.305882, 0.686275, 1)
-shader_parameter/diffuse_color = Color(0.392157, 0.596078, 0.815686, 1)
-shader_parameter/specular_color = Color(1, 1, 1, 1)
-shader_parameter/shininess = 10.0
-shader_parameter/sineN = 3
-shader_parameter/frequency = 0.97
-shader_parameter/amplitude = 0.19
-shader_parameter/speed = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jucf"]
-render_priority = 0
-shader = ExtResource("2_3bibp")
-shader_parameter/light_direction = Vector3(0, -1, -1)
-shader_parameter/light_color = Color(1, 1, 1, 1)
-shader_parameter/ambient_color = Color(0.1, 0.1, 0.1, 1)
-shader_parameter/diffuse_color = Color(0.8, 0.5, 0.2, 1)
-shader_parameter/specular_color = Color(1, 1, 1, 1)
-shader_parameter/shininess = 32.0
-shader_parameter/sineN = 4
-shader_parameter/frequency = 0.14
-shader_parameter/amplitude = 0.37
-shader_parameter/speed = 10.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_a6tc2"]
-material = SubResource("ShaderMaterial_0jucf")
-size = Vector2(10, 10)
-subdivide_width = 100
-subdivide_depth = 100
-orientation = 1
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_lb3kx")
@@ -74,9 +37,3 @@ rings = 25
 
 [node name="Player" parent="." instance=ExtResource("2_w75xp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130842, 1.31602, 2.34102)
-
-[node name="Sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0955362, -0.378068, -0.0578094)
-material_override = SubResource("ShaderMaterial_y5hm7")
-mesh = SubResource("QuadMesh_a6tc2")
-script = ExtResource("3_h8bkk")

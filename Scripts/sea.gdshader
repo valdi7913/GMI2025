@@ -16,9 +16,11 @@ uniform float amplitude : hint_range(0, 1, 0.01) = 0.2;
 uniform float speed : hint_range(1.0, 100.0, 1.0) =10;
 
 void vertex() {
-	float wave1 = sin(frequency * VERTEX.x + TIME * speed) * amplitude;
-	float wave2 = sin(frequency * VERTEX.z + TIME * speed) * amplitude;
-	VERTEX.y += wave1 + wave2;
+	for(int i = 1; i <= sineN; i++) {
+		float wave1 = sin(frequency * VERTEX.x + TIME * speed) * amplitude;
+		float wave2 = sin(frequency * VERTEX.z + TIME * speed) * amplitude;
+		VERTEX.y += wave1 + wave2;
+	}
 }
 
 void fragment() {
